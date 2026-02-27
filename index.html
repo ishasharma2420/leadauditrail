@@ -21,26 +21,10 @@
     --shadow-hover: 0 2px 8px rgba(15,23,40,0.08), 0 8px 24px rgba(15,23,40,0.08);
     --radius: 12px;
 
-    --flash-color: #2563eb;
-    --flash-light: #eff6ff;
-    --flash-mid: #bfdbfe;
-
-    --sherlock-color: #7c3aed;
-    --sherlock-light: #f5f3ff;
-    --sherlock-mid: #ddd6fe;
-
-    --hawke-color: #059669;
-    --hawke-light: #ecfdf5;
-    --hawke-mid: #a7f3d0;
-
-    --invorto-color: #d97706;
-    --invorto-light: #fffbeb;
-    --invorto-mid: #fde68a;
-
-    --sev-critical: #dc2626;
-    --sev-high: #ea580c;
-    --sev-medium: #d97706;
-    --sev-low: #16a34a;
+    --flash-color: #2563eb;    --flash-light: #eff6ff;    --flash-mid: #bfdbfe;
+    --sherlock-color: #7c3aed; --sherlock-light: #f5f3ff;  --sherlock-mid: #ddd6fe;
+    --hawke-color: #059669;    --hawke-light: #ecfdf5;    --hawke-mid: #a7f3d0;
+    --invorto-color: #d97706;  --invorto-light: #fffbeb;  --invorto-mid: #fde68a;
   }
 
   body {
@@ -48,390 +32,133 @@
     background: var(--bg);
     color: var(--text-primary);
     padding: 16px;
-    min-height: 100vh;
     font-size: 13px;
     line-height: 1.5;
   }
 
   /* Header */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .header-title {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: -0.2px;
-  }
-  .header-sub {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 1px;
-  }
-  .header-badge {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    background: #0f1728;
-    color: #fff;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+  .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border); }
+  .header-title { font-family:'Bricolage Grotesque',sans-serif; font-size:15px; font-weight:700; letter-spacing:-0.2px; }
+  .header-sub { font-size:11px; color:var(--text-muted); margin-top:1px; }
+  .header-badge { font-size:10px; font-weight:600; padding:3px 9px; background:#0f1728; color:#fff; border-radius:20px; letter-spacing:0.5px; text-transform:uppercase; }
 
   /* Card */
-  .card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin-bottom: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    animation: cardIn 0.4s ease both;
-    transition: box-shadow 0.2s;
-  }
-  .card:hover { box-shadow: var(--shadow-hover); }
+  .card { background:var(--card-bg); border-radius:var(--radius); box-shadow:var(--shadow); margin-bottom:12px; overflow:hidden; border:1px solid var(--border); transition:box-shadow 0.2s; animation:cardIn 0.4s ease both; }
+  .card:hover { box-shadow:var(--shadow-hover); }
+  .card:nth-child(1){animation-delay:.04s} .card:nth-child(2){animation-delay:.09s}
+  .card:nth-child(3){animation-delay:.14s} .card:nth-child(4){animation-delay:.19s}
+  @keyframes cardIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
-  @keyframes cardIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .card:nth-child(1) { animation-delay: 0.05s; }
-  .card:nth-child(2) { animation-delay: 0.1s; }
-  .card:nth-child(3) { animation-delay: 0.15s; }
-  .card:nth-child(4) { animation-delay: 0.2s; }
+  .card-accent { height:3px; }
+  .flash    .card-accent { background:linear-gradient(90deg,#2563eb,#60a5fa); }
+  .hawke    .card-accent { background:linear-gradient(90deg,#059669,#34d399); }
+  .sherlock .card-accent { background:linear-gradient(90deg,#7c3aed,#a78bfa); }
+  .invorto  .card-accent { background:linear-gradient(90deg,#d97706,#fbbf24); }
 
-  .card-accent {
-    height: 3px;
-    width: 100%;
-  }
-  .flash .card-accent { background: linear-gradient(90deg, var(--flash-color), #60a5fa); }
-  .sherlock .card-accent { background: linear-gradient(90deg, var(--sherlock-color), #a78bfa); }
-  .hawke .card-accent { background: linear-gradient(90deg, var(--hawke-color), #34d399); }
-  .invorto .card-accent { background: linear-gradient(90deg, var(--invorto-color), #fbbf24); }
+  .card-header { display:flex; align-items:center; gap:10px; padding:12px 16px 10px; border-bottom:1px solid var(--border); }
+  .agent-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+  .flash    .agent-icon { background:var(--flash-light); }
+  .hawke    .agent-icon { background:var(--hawke-light); }
+  .sherlock .agent-icon { background:var(--sherlock-light); }
+  .invorto  .agent-icon { background:var(--invorto-light); }
 
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .agent-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-  }
-  .flash .agent-icon { background: var(--flash-light); }
-  .sherlock .agent-icon { background: var(--sherlock-light); }
-  .hawke .agent-icon { background: var(--hawke-light); }
-  .invorto .agent-icon { background: var(--invorto-light); }
+  .agent-name    { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; }
+  .agent-tagline { font-size:10px; color:var(--text-muted); }
+  .agent-status  { margin-left:auto; font-size:10px; font-weight:600; padding:2px 8px; border-radius:10px; text-transform:uppercase; letter-spacing:0.3px; }
+  .status-active { background:#dcfce7; color:#15803d; }
+  .status-soon   { background:#f1f5f9; color:var(--text-muted); }
 
-  .agent-name {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-  .agent-tagline {
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 0px;
-  }
-  .agent-status {
-    margin-left: auto;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-  .status-active {
-    background: #dcfce7;
-    color: #15803d;
-  }
+  .card-body { padding:14px 16px 16px; }
 
-  .card-body { padding: 14px 16px 16px; }
+  /* Score ring */
+  .score-row { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
+  .score-ring-wrap { position:relative; width:68px; height:68px; flex-shrink:0; }
+  .score-ring-wrap svg { transform:rotate(-90deg); display:block; }
+  .score-ring-bg   { fill:none; stroke:var(--border); stroke-width:5.5; }
+  .score-ring-fill { fill:none; stroke-width:5.5; stroke-linecap:round; transition:stroke-dashoffset 1.3s cubic-bezier(.34,1.56,.64,1); }
+  .score-value { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'Bricolage Grotesque',sans-serif; font-size:20px; font-weight:700; line-height:1; }
+  .score-value small { font-size:8px; font-weight:500; color:var(--text-muted); margin-top:2px; font-family:'Inter',sans-serif; }
+  .score-meta { flex:1; }
+  .readiness-label  { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:3px; }
+  .readiness-bucket { font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:700; line-height:1.1; }
+  .bucket-high   { color:#16a34a; }
+  .bucket-medium { color:#d97706; }
+  .bucket-low    { color:#dc2626; }
 
-  /* Score Ring */
-  .score-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 14px;
-  }
-  .score-ring-wrap {
-    position: relative;
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-  }
-  .score-ring-wrap svg {
-    transform: rotate(-90deg);
-  }
-  .score-ring-bg {
-    fill: none;
-    stroke: var(--border);
-    stroke-width: 5;
-  }
-  .score-ring-fill {
-    fill: none;
-    stroke-width: 5;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .score-value {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1;
-  }
-  .score-value small {
-    font-size: 8px;
-    font-weight: 500;
-    color: var(--text-muted);
-    margin-top: 1px;
-    font-family: 'Inter', sans-serif;
-  }
-  .score-meta { flex: 1; }
-  .readiness-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    margin-bottom: 3px;
-  }
-  .readiness-bucket {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  .bucket-high { color: #16a34a; }
-  .bucket-medium { color: #d97706; }
-  .bucket-low { color: #dc2626; }
+  /* Fields */
+  .field { margin-top:10px; }
+  .field-label { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:4px; }
+  .field-value { font-size:13px; color:var(--text-primary); font-weight:500; }
 
-  /* Field rows */
-  .field {
-    margin-top: 10px;
-  }
-  .field-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .field-value {
-    font-size: 13px;
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-  .reasoning-block {
-    background: var(--bg);
-    border-left: 3px solid var(--border);
-    border-radius: 0 6px 6px 0;
-    padding: 8px 10px;
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: 4px;
-  }
-  .flash .reasoning-block { border-left-color: var(--flash-mid); background: var(--flash-light); }
-  .sherlock .reasoning-block { border-left-color: var(--sherlock-mid); background: var(--sherlock-light); }
-  .hawke .reasoning-block { border-left-color: var(--hawke-mid); background: var(--hawke-light); }
-  .invorto .reasoning-block { border-left-color: var(--invorto-mid); background: var(--invorto-light); }
+  .reasoning-block { border-left:3px solid; border-radius:0 6px 6px 0; padding:8px 10px; font-size:12px; color:var(--text-secondary); line-height:1.65; margin-top:4px; }
+  .flash    .reasoning-block { border-color:var(--flash-mid);    background:var(--flash-light); }
+  .hawke    .reasoning-block { border-color:var(--hawke-mid);    background:var(--hawke-light); }
+  .sherlock .reasoning-block { border-color:var(--sherlock-mid); background:var(--sherlock-light); }
+  .invorto  .reasoning-block { border-color:var(--invorto-mid);  background:var(--invorto-light); }
 
   /* Chips */
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-  .chip-anomaly {
-    background: #f1f5f9;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-  }
+  .chip { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
+  .chip-anomaly { background:#f1f5f9; color:var(--text-secondary); border:1px solid var(--border); }
 
-  .severity-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-  }
-  .sev-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .sev-critical { background: #fee2e2; color: var(--sev-critical); }
-  .sev-critical .sev-dot { background: var(--sev-critical); }
-  .sev-high { background: #ffedd5; color: var(--sev-high); }
-  .sev-high .sev-dot { background: var(--sev-high); }
-  .sev-medium { background: #fef3c7; color: var(--sev-medium); }
-  .sev-medium .sev-dot { background: var(--sev-medium); }
-  .sev-low { background: #dcfce7; color: var(--sev-low); }
-  .sev-low .sev-dot { background: var(--sev-low); }
+  .severity-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px; }
+  .sev-dot { width:6px; height:6px; border-radius:50%; display:inline-block; }
+  .sev-critical { background:#fee2e2; color:#dc2626; } .sev-critical .sev-dot { background:#dc2626; }
+  .sev-high     { background:#ffedd5; color:#ea580c; } .sev-high     .sev-dot { background:#ea580c; }
+  .sev-medium   { background:#fef3c7; color:#d97706; } .sev-medium   .sev-dot { background:#d97706; }
+  .sev-low      { background:#dcfce7; color:#16a34a; } .sev-low      .sev-dot { background:#16a34a; }
 
   /* Confidence bar */
-  .conf-wrap { margin-top: 10px; }
-  .conf-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  .conf-bar-bg {
-    height: 6px;
-    background: var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .conf-bar-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: linear-gradient(90deg, var(--hawke-color), #34d399);
-    width: 0%;
-    transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .conf-pct {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--hawke-color);
-  }
+  .conf-wrap   { margin-top:12px; }
+  .conf-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
+  .conf-bar-bg { height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+  .conf-bar-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,#059669,#34d399); width:0%; transition:width 1.3s cubic-bezier(.34,1.56,.64,1); }
+  .conf-pct { font-family:'Bricolage Grotesque',sans-serif; font-size:15px; font-weight:700; color:#059669; }
 
-  /* Two-col chips row */
-  .two-col { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-  .two-col > * { flex: 1 1 calc(50% - 5px); min-width: 120px; }
+  .two-col { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+  .two-col > * { flex:1 1 calc(50% - 5px); min-width:120px; }
 
-  /* Divider */
-  .divider { height: 1px; background: var(--border); margin: 12px 0; }
+  .divider { height:1px; background:var(--border); margin:12px 0; }
 
-  /* QA Risk */
-  .qa-risk-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
-  .risk-badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 3px 10px; border-radius: 6px;
-    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
-  }
-  .risk-high { background: #fee2e2; color: #dc2626; }
-  .risk-medium { background: #fef3c7; color: #b45309; }
-  .risk-low { background: #dcfce7; color: #15803d; }
+  /* QA */
+  .qa-risk-row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+  .risk-badge  { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
+  .risk-high   { background:#fee2e2; color:#dc2626; }
+  .risk-medium { background:#fef3c7; color:#b45309; }
+  .risk-low    { background:#dcfce7; color:#15803d; }
 
-  /* Findings list */
-  .findings-list { list-style: none; }
-  .findings-list li {
-    font-size: 12px;
-    color: var(--text-secondary);
-    padding: 3px 0;
-    padding-left: 14px;
-    position: relative;
-    line-height: 1.5;
-  }
-  .findings-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--sherlock-mid);
-  }
+  .findings-list    { list-style:none; }
+  .findings-list li { font-size:12px; color:var(--text-secondary); padding:3px 0 3px 14px; position:relative; line-height:1.5; }
+  .findings-list li::before { content:''; position:absolute; left:0; top:9px; width:5px; height:5px; border-radius:50%; background:var(--sherlock-mid); }
 
-  /* Timestamp */
-  .timestamp {
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+  .timestamp { font-size:10px; color:var(--text-muted); margin-top:10px; display:flex; align-items:center; gap:4px; }
 
-  /* Loading */
-  #loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
-    gap: 16px;
-  }
-  .spinner {
-    width: 36px; height: 36px;
-    border: 3px solid var(--border);
-    border-top-color: #2563eb;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-text {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
+  /* Pending state (active agent, no data yet) */
+  .pending-body { padding:16px 16px 18px; display:flex; align-items:flex-start; gap:12px; }
+  .pending-icon { font-size:20px; flex-shrink:0; margin-top:2px; opacity:0.55; }
+  .pending-text strong { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; display:block; margin-bottom:3px; }
+  .pending-text p { font-size:12px; color:var(--text-muted); line-height:1.55; }
 
-  /* Error */
-  #error {
-    display: none;
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-muted);
-  }
+  /* Coming Soon state */
+  .card.coming-soon { opacity:0.75; }
+  .card.coming-soon .card-header { background:#fafbfc; }
+  .cs-body { padding:16px 16px 18px; display:flex; align-items:flex-start; gap:12px; }
+  .cs-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+  .cs-text strong { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; display:block; margin-bottom:3px; color:var(--text-primary); }
+  .cs-text p { font-size:12px; color:var(--text-muted); line-height:1.55; }
 
-  /* Empty */
-  .empty-state {
-    text-align: center;
-    padding: 50px 20px;
-    display: none;
-  }
-  .empty-state .empty-icon { font-size: 36px; margin-bottom: 12px; }
-  .empty-state h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-  }
-  .empty-state p {
-    font-size: 12px;
-    color: var(--text-muted);
-    max-width: 240px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
+  /* Full empty (both live agents have no data) */
+  .empty-notice { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:18px 16px; margin-bottom:12px; display:flex; align-items:flex-start; gap:12px; box-shadow:var(--shadow); }
+  .empty-notice .en-icon { font-size:22px; flex-shrink:0; }
+  .empty-notice strong { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; display:block; margin-bottom:3px; }
+  .empty-notice p { font-size:12px; color:var(--text-muted); line-height:1.55; }
+
+  /* Loading / Error */
+  #loading { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 20px; gap:14px; }
+  .spinner { width:34px; height:34px; border:3px solid var(--border); border-top-color:#2563eb; border-radius:50%; animation:spin .8s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+  .loading-text { font-size:12px; color:var(--text-muted); font-weight:500; }
+  #error   { display:none; text-align:center; padding:40px 20px; color:var(--text-muted); }
+  #content { display:none; }
 </style>
 </head>
 <body>
@@ -439,373 +166,257 @@
 <div class="header">
   <div>
     <div class="header-title">AI Lab Intelligence</div>
-    <div class="header-sub" id="lastUpdated">Loading...</div>
+    <div class="header-sub" id="lastUpdated">Loading…</div>
   </div>
   <span class="header-badge">Active</span>
 </div>
 
 <div id="loading">
   <div class="spinner"></div>
-  <div class="loading-text">Fetching agent analysis…</div>
+  <div class="loading-text">Waking up the agents…</div>
 </div>
 
 <div id="error">
-  <div style="font-size:28px;margin-bottom:10px;">⚠️</div>
-  <div style="font-size:13px;font-weight:600;color:#0f1728;margin-bottom:6px;">Could not load intelligence data</div>
-  <div style="font-size:12px;">Check the backend connection and try again.</div>
+  <div style="font-size:28px;margin-bottom:10px">⚠️</div>
+  <div style="font-size:13px;font-weight:600;color:#0f1728;margin-bottom:6px">Couldn't reach the intelligence layer</div>
+  <div style="font-size:12px">Check the backend or try refreshing.</div>
 </div>
 
-<div id="content" style="display:none;">
-  <div class="empty-state" id="emptyState">
-    <div class="empty-icon">🔍</div>
-    <h3>No Intelligence Yet</h3>
-    <p>The AI agents haven't analysed this lead yet. Check back after the next scheduled run.</p>
+<div id="content">
+  <div id="emptyNotice" style="display:none" class="empty-notice">
+    <div class="en-icon">🔍</div>
+    <div>
+      <strong>Nothing to report… yet</strong>
+      <p>Flash and Hawke haven't analysed this lead. They'll fire on the next scheduled run — check back soon.</p>
+    </div>
   </div>
   <div id="cards"></div>
 </div>
 
 <script>
-const API_BASE = 'https://lead-intelligence-api.onrender.com/lead-intelligence';
+const API = 'https://lead-intelligence-api.onrender.com/lead-intelligence';
 
-function getParam(name) {
-  const u = new URLSearchParams(window.location.search);
-  return u.get(name);
+const pid = () => new URLSearchParams(location.search).get('pid');
+
+function val(v) {
+  if (v === null || v === undefined) return null;
+  const s = String(v).trim();
+  return (!s || ['null','undefined','-','--','n/a','none',''].includes(s.toLowerCase())) ? null : s;
 }
 
-function isEmpty(val) {
-  return !val || val === '' || val === 'null' || val === 'undefined' || val === '-';
+function fmtDate(v) {
+  if (!v) return null;
+  try { const d = new Date(v); return isNaN(d) ? v : d.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+  catch { return v; }
 }
 
-function fmt(val) {
-  return isEmpty(val) ? null : val;
-}
+const sevClass  = s => { const l=(s||'').toLowerCase(); return l==='critical'?'sev-critical':l==='high'?'sev-high':l==='medium'?'sev-medium':'sev-low'; };
+const riskClass = r => { const l=(r||'').toLowerCase(); return l==='high'?'risk-high':l==='medium'?'risk-medium':'risk-low'; };
+const bktClass  = b => { const l=(b||'').toLowerCase(); return l==='high'?'bucket-high':l==='medium'?'bucket-medium':'bucket-low'; };
 
-function fmtDate(val) {
-  if (!val) return null;
-  try {
-    const d = new Date(val);
-    if (isNaN(d)) return val;
-    return d.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-  } catch { return val; }
-}
-
-function severityClass(sev) {
-  if (!sev) return '';
-  const s = sev.toLowerCase();
-  if (s === 'critical') return 'sev-critical';
-  if (s === 'high') return 'sev-high';
-  if (s === 'medium') return 'sev-medium';
-  return 'sev-low';
-}
-
-function riskClass(risk) {
-  if (!risk) return '';
-  const r = risk.toLowerCase();
-  if (r === 'high') return 'risk-high';
-  if (r === 'medium') return 'risk-medium';
-  return 'risk-low';
-}
-
-function bucketClass(bucket) {
-  if (!bucket) return '';
-  const b = bucket.toLowerCase();
-  if (b === 'high') return 'bucket-high';
-  if (b === 'medium') return 'bucket-medium';
-  return 'bucket-low';
-}
-
+/* ── Agent Flash ── */
 function buildFlash(d) {
-  const score = fmt(d.mx_AI_Readiness_Score);
-  const bucket = fmt(d.mx_Readiness_Bucket);
-  const intent = fmt(d.mx_AI_Detected_Intent);
-  const reasoning = fmt(d.mx_AI_Reasoning);
+  const score  = val(d.mx_AI_Readiness_Score);
+  const bucket = val(d.mx_Readiness_Bucket);
+  const intent = val(d.mx_AI_Detected_Intent);
+  const reason = val(d.mx_AI_Reasoning);
+  const has    = score||bucket||intent||reason;
 
-  if (!score && !bucket && !intent && !reasoning) return null;
+  const n = parseInt(score)||0;
+  const r = 27, circ = +(2*Math.PI*r).toFixed(2);
+  const offset = +(circ-(n/100)*circ).toFixed(2);
+  const stroke = !score ? '#e4e8f0' : (bucket||'').toLowerCase()==='high' ? '#16a34a' : (bucket||'').toLowerCase()==='medium' ? '#d97706' : '#dc2626';
 
-  const scoreNum = parseInt(score) || 0;
-  const r = 26;
-  const circ = 2 * Math.PI * r;
-  const offset = circ - (scoreNum / 100) * circ;
-
-  const bucketColor = bucket ? (bucket.toLowerCase() === 'high' ? '#16a34a' : bucket.toLowerCase() === 'medium' ? '#d97706' : '#dc2626') : '#2563eb';
-
-  return `
-    <div class="card flash">
-      <div class="card-accent"></div>
-      <div class="card-header">
-        <div class="agent-icon">⚡</div>
-        <div>
-          <div class="agent-name">Agent Flash</div>
-          <div class="agent-tagline">60 Seconds to Schedule</div>
-        </div>
-        <span class="agent-status status-active">Active</span>
-      </div>
-      <div class="card-body">
-        ${score || bucket ? `
-        <div class="score-row">
-          ${score ? `
-          <div class="score-ring-wrap">
-            <svg width="64" height="64" viewBox="0 0 64 64">
-              <circle class="score-ring-bg" cx="32" cy="32" r="${r}"/>
-              <circle class="score-ring-fill" cx="32" cy="32" r="${r}"
-                stroke="${bucketColor}"
-                stroke-dasharray="${circ}"
-                stroke-dashoffset="${circ}"
-                data-offset="${offset}"
-                id="flashRing"/>
-            </svg>
-            <div class="score-value">${scoreNum}<small>/100</small></div>
-          </div>` : ''}
-          ${bucket ? `
-          <div class="score-meta">
-            <div class="readiness-label">Readiness Score</div>
-            <div class="readiness-bucket ${bucketClass(bucket)}">${bucket}</div>
-          </div>` : ''}
-        </div>` : ''}
-        ${intent ? `
-        <div class="field">
-          <div class="field-label">Detected Intent</div>
-          <div class="field-value">${intent}</div>
-        </div>` : ''}
-        ${reasoning ? `
-        <div class="field">
-          <div class="field-label">AI Reasoning</div>
-          <div class="reasoning-block">${reasoning}</div>
-        </div>` : ''}
+  const body = has ? `
+    <div class="card-body">
+      ${(score||bucket)?`<div class="score-row">
+        ${score?`<div class="score-ring-wrap"><svg width="68" height="68" viewBox="0 0 68 68">
+          <circle class="score-ring-bg" cx="34" cy="34" r="${r}"/>
+          <circle class="score-ring-fill" cx="34" cy="34" r="${r}" stroke="${stroke}"
+            stroke-dasharray="${circ}" stroke-dashoffset="${circ}"
+            data-offset="${offset}" id="flashRing"/>
+        </svg><div class="score-value">${n}<small>/100</small></div></div>`:''}
+        ${bucket?`<div class="score-meta"><div class="readiness-label">Readiness Score</div><div class="readiness-bucket ${bktClass(bucket)}">${bucket}</div></div>`:''}
+      </div>`:''}
+      ${intent?`<div class="field"><div class="field-label">Detected Intent</div><div class="field-value">${intent}</div></div>`:''}
+      ${reason?`<div class="field"><div class="field-label">AI Reasoning</div><div class="reasoning-block">${reason}</div></div>`:''}
+    </div>` : `
+    <div class="pending-body">
+      <div class="pending-icon">⏳</div>
+      <div class="pending-text">
+        <strong>Analysis pending</strong>
+        <p>Flash fires within 60 seconds of the next lead activity. Nothing to score yet.</p>
       </div>
     </div>`;
+
+  return `<div class="card flash"><div class="card-accent"></div>
+    <div class="card-header">
+      <div class="agent-icon">⚡</div>
+      <div><div class="agent-name">Agent Flash</div><div class="agent-tagline">60 Seconds to Schedule</div></div>
+      <span class="agent-status status-active">Active</span>
+    </div>${body}</div>`;
 }
 
+/* ── Agent Hawke ── */
 function buildHawke(d) {
-  const anomalyType = fmt(d.mx_Latest_Anomaly_Type);
-  const severity = fmt(d.mx_Latest_Anomaly_Severity);
-  const conf = fmt(d.mx_Latest_Anomaly_Confidence);
-  const lastRun = fmt(d.mx_Last_Intelligence_Run);
-  const explanation = fmt(d.mx_Latest_Anomaly_Explanation);
-  const status = fmt(d.mx_AI_Anomaly_Status);
+  const anomType = val(d.mx_Latest_Anomaly_Type);
+  const severity = val(d.mx_Latest_Anomaly_Severity);
+  const conf     = val(d.mx_Latest_Anomaly_Confidence);
+  const lastRun  = val(d.mx_Last_Intelligence_Run);
+  const explain  = val(d.mx_Latest_Anomaly_Explanation);
+  const status   = val(d.mx_AI_Anomaly_Status);
+  const has      = anomType||severity||conf||explain||status||lastRun;
+  const confNum  = parseInt(conf)||0;
 
-  if (!anomalyType && !severity && !conf && !explanation) return null;
-
-  const confNum = parseInt(conf) || 0;
-
-  return `
-    <div class="card hawke">
-      <div class="card-accent"></div>
-      <div class="card-header">
-        <div class="agent-icon">🦅</div>
-        <div>
-          <div class="agent-name">Agent Hawke</div>
-          <div class="agent-tagline">Anomaly Detection</div>
-        </div>
-        <span class="agent-status status-active">Active</span>
-      </div>
-      <div class="card-body">
-        ${anomalyType || severity ? `
-        <div class="two-col">
-          ${anomalyType ? `
-          <div class="field">
-            <div class="field-label">Anomaly Type</div>
-            <div class="field-value"><span class="chip chip-anomaly">${anomalyType}</span></div>
-          </div>` : ''}
-          ${severity ? `
-          <div class="field">
-            <div class="field-label">Severity</div>
-            <div class="field-value"><span class="severity-badge ${severityClass(severity)}"><span class="sev-dot"></span>${severity}</span></div>
-          </div>` : ''}
-        </div>` : ''}
-        ${conf ? `
-        <div class="conf-wrap">
-          <div class="conf-header">
-            <div class="field-label">Confidence</div>
-            <div class="conf-pct" id="confPct">0%</div>
-          </div>
-          <div class="conf-bar-bg">
-            <div class="conf-bar-fill" data-pct="${confNum}" id="confBar"></div>
-          </div>
-        </div>` : ''}
-        ${explanation ? `
-        <div class="field">
-          <div class="field-label">Explanation</div>
-          <div class="reasoning-block">${explanation}</div>
-        </div>` : ''}
-        ${lastRun ? `<div class="timestamp">🕐 Last run: ${fmtDate(lastRun)}</div>` : ''}
+  const body = has ? `
+    <div class="card-body">
+      ${(anomType||severity)?`<div class="two-col">
+        ${anomType?`<div class="field"><div class="field-label">Anomaly Type</div><div class="field-value"><span class="chip chip-anomaly">${anomType}</span></div></div>`:''}
+        ${severity?`<div class="field"><div class="field-label">Severity</div><div class="field-value"><span class="severity-badge ${sevClass(severity)}"><span class="sev-dot"></span>${severity}</span></div></div>`:''}
+      </div>`:''}
+      ${conf?`<div class="conf-wrap"><div class="conf-header"><div class="field-label">Confidence</div><div class="conf-pct" id="confPct">0%</div></div><div class="conf-bar-bg"><div class="conf-bar-fill" data-pct="${confNum}" id="confBar"></div></div></div>`:''}
+      ${explain?`<div class="field"><div class="field-label">Explanation</div><div class="reasoning-block">${explain}</div></div>`:''}
+      ${status?`<div class="field"><div class="field-label">Status</div><div class="field-value">${status}</div></div>`:''}
+      ${lastRun?`<div class="timestamp">🕐 Last run: ${fmtDate(lastRun)}</div>`:''}
+    </div>` : `
+    <div class="pending-body">
+      <div class="pending-icon">🦅</div>
+      <div class="pending-text">
+        <strong>No anomalies on radar</strong>
+        <p>Hawke sweeps CRM &amp; SIS on schedule. Results will appear after the next scan.</p>
       </div>
     </div>`;
+
+  return `<div class="card hawke"><div class="card-accent"></div>
+    <div class="card-header">
+      <div class="agent-icon">🦅</div>
+      <div><div class="agent-name">Agent Hawke</div><div class="agent-tagline">Anomaly Detection</div></div>
+      <span class="agent-status status-active">Active</span>
+    </div>${body}</div>`;
 }
 
+/* ── Agent Sherlock ── Coming Soon ── */
 function buildSherlock(d) {
-  const status = fmt(d.mx_QA_Status);
-  const risk = fmt(d.mx_QA_Risk_Level);
-  const summary = fmt(d.mx_QA_Summary);
-  const findings = fmt(d.mx_QA_Key_Findings);
-  const advisory = fmt(d.mx_QA_Advisory_Notes);
-  const concerns = fmt(d.mx_QA_Concerns);
+  const status   = val(d.mx_QA_Status);
+  const risk     = val(d.mx_QA_Risk_Level);
+  const summary  = val(d.mx_QA_Summary);
+  const findings = val(d.mx_QA_Key_Findings);
+  const advisory = val(d.mx_QA_Advisory_Notes);
+  const concerns = val(d.mx_QA_Concerns);
+  const has      = status||risk||summary||findings||advisory||concerns;
 
-  if (!status && !risk && !summary && !findings && !advisory && !concerns) return null;
-
-  const findingsList = findings ? findings.split(/[;|,\n]/).map(f => f.trim()).filter(f => f.length > 2) : [];
-
-  return `
-    <div class="card sherlock">
-      <div class="card-accent"></div>
-      <div class="card-header">
-        <div class="agent-icon">🔎</div>
-        <div>
-          <div class="agent-name">Agent Sherlock</div>
-          <div class="agent-tagline">Intake QA Review</div>
-        </div>
-        <span class="agent-status status-active">Active</span>
-      </div>
-      <div class="card-body">
-        ${status || risk ? `
-        <div class="qa-risk-row">
-          ${status ? `<span class="chip chip-anomaly">${status}</span>` : ''}
-          ${risk ? `<span class="risk-badge ${riskClass(risk)}">${risk} Risk</span>` : ''}
-        </div>` : ''}
-        ${summary ? `
-        <div class="field">
-          <div class="field-label">Summary</div>
-          <div class="reasoning-block">${summary}</div>
-        </div>` : ''}
-        ${findingsList.length ? `
-        <div class="field">
-          <div class="field-label">Key Findings</div>
-          <ul class="findings-list">
-            ${findingsList.map(f => `<li>${f}</li>`).join('')}
-          </ul>
-        </div>` : (findings ? `
-        <div class="field">
-          <div class="field-label">Key Findings</div>
-          <div class="reasoning-block">${findings}</div>
-        </div>` : '')}
-        ${advisory ? `
-        <div class="divider"></div>
-        <div class="field">
-          <div class="field-label">Advisory Notes</div>
-          <div class="reasoning-block">${advisory}</div>
-        </div>` : ''}
-        ${concerns ? `
-        <div class="field">
-          <div class="field-label">Concerns</div>
-          <div class="reasoning-block">${concerns}</div>
-        </div>` : ''}
+  let body;
+  if (has) {
+    const fl = findings ? findings.split(/[;|\n]/).map(f=>f.trim()).filter(f=>f.length>2) : [];
+    body = `<div class="card-body">
+      ${(status||risk)?`<div class="qa-risk-row">${status?`<span class="chip chip-anomaly">${status}</span>`:''} ${risk?`<span class="risk-badge ${riskClass(risk)}">${risk} Risk</span>`:''}</div>`:''}
+      ${summary?`<div class="field"><div class="field-label">Summary</div><div class="reasoning-block">${summary}</div></div>`:''}
+      ${fl.length?`<div class="field"><div class="field-label">Key Findings</div><ul class="findings-list">${fl.map(f=>`<li>${f}</li>`).join('')}</ul></div>`: findings?`<div class="field"><div class="field-label">Key Findings</div><div class="reasoning-block">${findings}</div></div>`:''}
+      ${advisory?`<div class="divider"></div><div class="field"><div class="field-label">Advisory Notes</div><div class="reasoning-block">${advisory}</div></div>`:''}
+      ${concerns?`<div class="field"><div class="field-label">Concerns</div><div class="reasoning-block">${concerns}</div></div>`:''}
+    </div>`;
+  } else {
+    body = `<div class="cs-body">
+      <div class="cs-icon">🔎</div>
+      <div class="cs-text">
+        <strong>Coming soon — Intake QA</strong>
+        <p>Sherlock is still sharpening its magnifying glass. Application completeness checks, missing doc flags, and risk scoring are on the way.</p>
       </div>
     </div>`;
+  }
+
+  return `<div class="card sherlock${has?'':' coming-soon'}"><div class="card-accent"></div>
+    <div class="card-header">
+      <div class="agent-icon">🔎</div>
+      <div><div class="agent-name">Agent Sherlock</div><div class="agent-tagline">Intake QA Review</div></div>
+      <span class="agent-status ${has?'status-active':'status-soon'}">${has?'Active':'Soon'}</span>
+    </div>${body}</div>`;
 }
 
+/* ── Invorto Voice ── Coming Soon ── */
 function buildInvorto(d) {
-  const hesitation = fmt(d.mx_Primary_Hesitation);
-  const motivation = fmt(d.mx_Motivation_Trigger);
-  const decisionOwner = fmt(d.mx_Decision_Owner);
-  const timeline = fmt(d.mx_Enrollment_Timeline_Voice_Call);
+  const hesitation = val(d.mx_Primary_Hesitation);
+  const motivation = val(d.mx_Motivation_Trigger);
+  const owner      = val(d.mx_Decision_Owner);
+  const timeline   = val(d.mx_Enrollment_Timeline_Voice_Call);
+  const has        = hesitation||motivation||owner||timeline;
 
-  if (!hesitation && !motivation && !decisionOwner && !timeline) return null;
-
-  return `
-    <div class="card invorto">
-      <div class="card-accent"></div>
-      <div class="card-header">
-        <div class="agent-icon">🎙️</div>
-        <div>
-          <div class="agent-name">Invorto Voice</div>
-          <div class="agent-tagline">Voice Call Intelligence</div>
-        </div>
-        <span class="agent-status status-active">Active</span>
-      </div>
-      <div class="card-body">
-        ${hesitation ? `
-        <div class="field">
-          <div class="field-label">Primary Hesitation</div>
-          <div class="reasoning-block">${hesitation}</div>
-        </div>` : ''}
-        ${motivation ? `
-        <div class="field">
-          <div class="field-label">Motivation Trigger</div>
-          <div class="field-value">${motivation}</div>
-        </div>` : ''}
-        ${decisionOwner || timeline ? `
-        <div class="two-col" style="margin-top:10px;">
-          ${decisionOwner ? `
-          <div class="field">
-            <div class="field-label">Decision Owner</div>
-            <div class="field-value">${decisionOwner}</div>
-          </div>` : ''}
-          ${timeline ? `
-          <div class="field">
-            <div class="field-label">Enrollment Timeline</div>
-            <div class="field-value">${timeline}</div>
-          </div>` : ''}
-        </div>` : ''}
+  let body;
+  if (has) {
+    body = `<div class="card-body">
+      ${hesitation?`<div class="field"><div class="field-label">Primary Hesitation</div><div class="reasoning-block">${hesitation}</div></div>`:''}
+      ${motivation?`<div class="field"><div class="field-label">Motivation Trigger</div><div class="field-value">${motivation}</div></div>`:''}
+      ${(owner||timeline)?`<div class="two-col">
+        ${owner   ?`<div class="field"><div class="field-label">Decision Owner</div><div class="field-value">${owner}</div></div>`:''}
+        ${timeline?`<div class="field"><div class="field-label">Enrollment Timeline</div><div class="field-value">${timeline}</div></div>`:''}
+      </div>`:''}
+    </div>`;
+  } else {
+    body = `<div class="cs-body">
+      <div class="cs-icon">🎙️</div>
+      <div class="cs-text">
+        <strong>Coming soon — Voice Intelligence</strong>
+        <p>Invorto is waiting for its first call. Once the voice bot engages, hesitations, motivations, and timelines will surface here.</p>
       </div>
     </div>`;
+  }
+
+  return `<div class="card invorto${has?'':' coming-soon'}"><div class="card-accent"></div>
+    <div class="card-header">
+      <div class="agent-icon">🎙️</div>
+      <div><div class="agent-name">Invorto Voice</div><div class="agent-tagline">Voice Call Intelligence</div></div>
+      <span class="agent-status ${has?'status-active':'status-soon'}">${has?'Active':'Soon'}</span>
+    </div>${body}</div>`;
 }
 
-function animateRing() {
+/* ── Animate ── */
+function animate() {
   const ring = document.getElementById('flashRing');
-  if (ring) {
-    const offset = parseFloat(ring.dataset.offset);
-    setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
-  }
+  if (ring) setTimeout(()=>{ ring.style.strokeDashoffset = ring.dataset.offset; }, 120);
+  const bar = document.getElementById('confBar'), pct = document.getElementById('confPct');
+  if (bar) setTimeout(()=>{ const p=parseFloat(bar.dataset.pct); bar.style.width=p+'%'; if(pct)pct.textContent=p+'%'; }, 220);
 }
 
-function animateBar() {
-  const bar = document.getElementById('confBar');
-  const pct = document.getElementById('confPct');
-  if (bar) {
-    const target = parseFloat(bar.dataset.pct);
-    setTimeout(() => {
-      bar.style.width = target + '%';
-      if (pct) pct.textContent = target + '%';
-    }, 200);
-  }
-}
+/* ── Init ── */
+async function init() {
+  const p = pid();
+  const loadEl    = document.getElementById('loading');
+  const contentEl = document.getElementById('content');
+  const errorEl   = document.getElementById('error');
+  const cardsEl   = document.getElementById('cards');
+  const emptyEl   = document.getElementById('emptyNotice');
+  const subEl     = document.getElementById('lastUpdated');
 
-async function loadData() {
-  const pid = getParam('pid');
-  const loading = document.getElementById('loading');
-  const content = document.getElementById('content');
-  const errorEl = document.getElementById('error');
-  const cards = document.getElementById('cards');
-  const emptyState = document.getElementById('emptyState');
-  const lastUpdated = document.getElementById('lastUpdated');
-
-  if (!pid) {
-    loading.style.display = 'none';
-    errorEl.style.display = 'block';
-    errorEl.querySelector('div:last-child').textContent = 'No lead ID provided.';
+  if (!p) {
+    loadEl.style.display='none'; errorEl.style.display='block';
+    errorEl.querySelector('div:last-child').textContent = 'No lead ID (pid) found in URL.';
     return;
   }
 
   try {
-    const res = await fetch(`${API_BASE}?pid=${encodeURIComponent(pid)}`);
-    if (!res.ok) throw new Error('API error');
-    const data = await res.json();
+    const res = await fetch(`${API}?pid=${encodeURIComponent(p)}`);
+    if (!res.ok) throw new Error(res.status);
+    const d = await res.json();
 
-    loading.style.display = 'none';
-    content.style.display = 'block';
-    lastUpdated.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    loadEl.style.display='none';
+    contentEl.style.display='block';
+    subEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
 
-    const flashHTML = buildFlash(data);
-    const hawkeHTML = buildHawke(data);
-    const sherlockHTML = buildSherlock(data);
-    const invortoHTML = buildInvorto(data);
+    const flashHas = val(d.mx_AI_Readiness_Score)||val(d.mx_Readiness_Bucket)||val(d.mx_AI_Detected_Intent)||val(d.mx_AI_Reasoning);
+    const hawkeHas = val(d.mx_Latest_Anomaly_Type)||val(d.mx_Latest_Anomaly_Severity)||val(d.mx_Latest_Anomaly_Confidence)||val(d.mx_Latest_Anomaly_Explanation)||val(d.mx_AI_Anomaly_Status)||val(d.mx_Last_Intelligence_Run);
 
-    const allCards = [flashHTML, hawkeHTML, sherlockHTML, invortoHTML].filter(Boolean);
+    if (!flashHas && !hawkeHas) emptyEl.style.display='flex';
 
-    if (allCards.length === 0) {
-      emptyState.style.display = 'block';
-    } else {
-      cards.innerHTML = allCards.join('');
-      animateRing();
-      animateBar();
-    }
-  } catch (e) {
-    loading.style.display = 'none';
-    errorEl.style.display = 'block';
+    cardsEl.innerHTML = [buildFlash(d), buildHawke(d), buildSherlock(d), buildInvorto(d)].join('');
+    animate();
+
+  } catch(e) {
+    loadEl.style.display='none';
+    errorEl.style.display='block';
   }
 }
 
-loadData();
+init();
 </script>
 </body>
 </html>
