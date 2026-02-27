@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+
+
+
+
+​<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,34 +11,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f6f8;
-    --white: #ffffff;
-    --border: #e8eaef;
-    --border-soft: #f0f1f4;
-    --text: #0f1117;
-    --text-muted: #7b8194;
-    --text-dim: #9da3b4;
-    --flash: #0066ff;
-    --flash-light: #eff4ff;
-    --flash-mid: #dbeafe;
-    --flash-border: #bfdbfe;
-    --sherlock: #7c3aed;
-    --sherlock-light: #f5f0ff;
-    --sherlock-border: #ddd6fe;
-    --hawke: #059669;
-    --hawke-light: #ecfdf5;
-    --hawke-mid: #d1fae5;
-    --hawke-border: #a7f3d0;
-    --invorto: #ea580c;
-    --invorto-light: #fff7ed;
-    --invorto-border: #fdba74;
-    --sev-high-bg: #fef2f2; --sev-high: #dc2626; --sev-high-border: #fecaca;
-    --sev-med-bg: #fffbeb;  --sev-med: #d97706;  --sev-med-border: #fde68a;
-    --sev-low-bg: #f0fdf4;  --sev-low: #16a34a;  --sev-low-border: #bbf7d0;
+    --bg: #f5f6f8; --white: #ffffff; --border: #e8eaef; --border-soft: #f0f1f4;
+    --text: #0f1117; --text-muted: #7b8194; --text-dim: #9da3b4;
+    --flash: #0066ff; --flash-light: #eff4ff; --flash-mid: #dbeafe; --flash-border: #bfdbfe;
+    --sherlock: #7c3aed; --sherlock-light: #f5f0ff; --sherlock-border: #ddd6fe;
+    --hawke: #059669; --hawke-light: #ecfdf5; --hawke-mid: #d1fae5; --hawke-border: #a7f3d0;
+    --invorto: #ea580c; --invorto-light: #fff7ed; --invorto-border: #fdba74;
+    --sev-high-bg:#fef2f2; --sev-high:#dc2626; --sev-high-border:#fecaca;
+    --sev-med-bg:#fffbeb; --sev-med:#d97706; --sev-med-border:#fde68a;
+    --sev-low-bg:#f0fdf4; --sev-low:#16a34a; --sev-low-border:#bbf7d0;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:13px; line-height:1.5; min-height:100vh; }
-  .wrapper { padding:14px; max-width:100%; }
+  .wrapper { padding:14px; }
 
   .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
   .header-left { display:flex; align-items:center; gap:8px; }
@@ -43,28 +32,27 @@
   .pulse-ring::after { content:''; position:absolute; inset:-3px; border:1.5px solid var(--flash); border-radius:50%; opacity:0; animation:pulse-ring 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(0.85);opacity:0.7;} }
   @keyframes pulse-ring { 0%{transform:scale(0.7);opacity:0.8;} 100%{transform:scale(1.4);opacity:0;} }
-  .header-title { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; color:var(--text); }
+  .header-title { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; }
   .header-sub { font-size:11px; color:var(--text-muted); }
 
-  /* Single column stack */
   .stack { display:flex; flex-direction:column; gap:10px; }
 
-  .card { background:var(--white); border-radius:14px; border:1px solid var(--border); overflow:hidden; transition:box-shadow 0.2s ease,transform 0.2s ease; animation:fadeUp 0.4s ease both; }
+  .card { background:var(--white); border-radius:14px; border:1px solid var(--border); overflow:hidden; transition:box-shadow 0.2s,transform 0.2s; animation:fadeUp 0.4s ease both; }
   .card:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(0,0,0,0.07); }
   .card:nth-child(1){animation-delay:0.04s;} .card:nth-child(2){animation-delay:0.08s;} .card:nth-child(3){animation-delay:0.12s;} .card:nth-child(4){animation-delay:0.16s;}
   @keyframes fadeUp { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 
   .card-bar { height:3px; }
-  .bar-flash    { background:linear-gradient(90deg,var(--flash),#60a5fa); }
-  .bar-sherlock { background:linear-gradient(90deg,var(--sherlock),#a78bfa); }
-  .bar-hawke    { background:linear-gradient(90deg,var(--hawke),#34d399); }
-  .bar-invorto  { background:linear-gradient(90deg,var(--invorto),#fb923c); }
+  .bar-flash{background:linear-gradient(90deg,var(--flash),#60a5fa);}
+  .bar-sherlock{background:linear-gradient(90deg,var(--sherlock),#a78bfa);}
+  .bar-hawke{background:linear-gradient(90deg,var(--hawke),#34d399);}
+  .bar-invorto{background:linear-gradient(90deg,var(--invorto),#fb923c);}
 
   .card-head { display:flex; align-items:center; justify-content:space-between; padding:12px 14px 10px; border-bottom:1px solid var(--border-soft); }
   .agent-id { display:flex; align-items:center; gap:9px; }
   .agent-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
   .icon-flash{background:var(--flash-light);} .icon-sherlock{background:var(--sherlock-light);} .icon-hawke{background:var(--hawke-light);} .icon-invorto{background:var(--invorto-light);}
-  .agent-name { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; color:var(--text); line-height:1.2; }
+  .agent-name { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; line-height:1.2; }
   .agent-role { font-size:10.5px; color:var(--text-muted); margin-top:1px; }
 
   .pill { font-size:10px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:3px 8px; border-radius:20px; }
@@ -72,14 +60,18 @@
 
   .card-body { padding:12px 14px 14px; }
 
-  /* No agents state */
+  /* Loading */
+  .loading { text-align:center; padding:40px 20px; color:var(--text-muted); }
+  .spinner { width:24px; height:24px; border:2px solid var(--border); border-top-color:var(--flash); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 10px; }
+  @keyframes spin { to{transform:rotate(360deg);} }
+
+  /* All empty */
   .all-empty { text-align:center; padding:48px 24px; }
   .all-empty-emoji { font-size:36px; margin-bottom:10px; animation:float 3s ease-in-out infinite; }
   @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
   .all-empty-title { font-family:'Bricolage Grotesque',sans-serif; font-size:14px; font-weight:700; color:var(--text-muted); margin-bottom:4px; }
   .all-empty-sub { font-size:12px; color:var(--text-dim); }
 
-  /* Score hero */
   .score-hero { display:flex; align-items:center; gap:10px; background:var(--flash-light); border:1px solid var(--flash-border); border-radius:10px; padding:10px 12px; margin-bottom:11px; }
   .score-ring { position:relative; width:46px; height:46px; flex-shrink:0; }
   .score-ring svg { width:46px; height:46px; transform:rotate(-90deg); }
@@ -100,10 +92,8 @@
   .conf-track { flex:1; height:5px; background:var(--border); border-radius:3px; overflow:hidden; }
   .conf-fill { height:100%; border-radius:3px; transition:width 1s cubic-bezier(.4,0,.2,1); }
   .cf-hawke { background:linear-gradient(90deg,var(--hawke-mid),var(--hawke)); }
-  .conf-num { font-family:'Bricolage Grotesque',sans-serif; font-size:12px; font-weight:700; min-width:26px; text-align:right; }
-  .cn-hawke { color:var(--hawke); }
+  .conf-num { font-family:'Bricolage Grotesque',sans-serif; font-size:12px; font-weight:700; min-width:26px; text-align:right; color:var(--hawke); }
 
-  /* Two col row for mini fields */
   .two-col { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
 
   .badge { display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
@@ -115,9 +105,9 @@
   .anomaly-chip { display:inline-block; background:var(--hawke-light); border:1px solid var(--hawke-border); border-radius:6px; padding:3px 9px; font-family:'Bricolage Grotesque',sans-serif; font-size:11px; font-weight:700; color:var(--hawke); }
 
   .insight-block { margin-top:10px; padding:9px 11px; border-radius:8px; font-size:11.5px; line-height:1.6; color:var(--text-muted); font-style:italic; }
-  .ib-flash    { background:var(--flash-light);    border:1px solid var(--flash-border);    border-left:2.5px solid var(--flash); }
-  .ib-sherlock { background:var(--sherlock-light); border:1px solid var(--sherlock-border); border-left:2.5px solid var(--sherlock); }
-  .ib-hawke    { background:var(--hawke-light);    border:1px solid var(--hawke-border);    border-left:2.5px solid var(--hawke); }
+  .ib-flash{background:var(--flash-light);border:1px solid var(--flash-border);border-left:2.5px solid var(--flash);}
+  .ib-sherlock{background:var(--sherlock-light);border:1px solid var(--sherlock-border);border-left:2.5px solid var(--sherlock);}
+  .ib-hawke{background:var(--hawke-light);border:1px solid var(--hawke-border);border-left:2.5px solid var(--hawke);}
 
   .hdivider { height:1px; background:var(--border-soft); margin:8px 0; }
 
@@ -128,173 +118,175 @@
 <body>
 <div class="wrapper">
   <div class="header">
-    <div class="header-left">
-      <div class="pulse-ring"></div>
-      <div class="header-title">AI Lab Intelligence</div>
-    </div>
-    <div class="header-sub" id="lastUpdated">Loading…</div>
+    <div class="header-left">
+      <div class="pulse-ring"></div>
+      <div class="header-title">AI Lab Intelligence</div>
+    </div>
+    <div class="header-sub" id="lastUpdated"></div>
   </div>
-  <div class="stack" id="stack"></div>
+  <div class="stack" id="stack">
+    <div class="loading"><div class="spinner"></div>Loading intelligence…</div>
+  </div>
   <div class="footer">Powered by <strong>LeadSquared AI Lab</strong></div>
 </div>
 
 <script>
-  function p(n) {
-    try { return decodeURIComponent(new URL(window.location.href).searchParams.get(n) || ''); }
-    catch(e) { return ''; }
+  // ── Config ──────────────────────────────────────────────────────
+  // Replace with your Render service URL after deployment
+  const API_BASE = 'https://lead-intelligence-api.onrender.com';
+
+  function pid() {
+    return new URL(window.location.href).searchParams.get('pid') || '';
   }
 
-  function setBadgeHTML(val) {
-    const v = (val||'').toUpperCase();
-    const cls = v==='HIGH'?'badge-high':v==='LOW'?'badge-low':'badge-medium';
-    return `<span class="badge ${cls}">${val||'—'}</span>`;
+  function badgeHTML(val) {
+    const v = (val||'').toUpperCase();
+    const cls = v==='HIGH'?'badge-high':v==='LOW'?'badge-low':'badge-medium';
+    return `<span class="badge ${cls}">${val||'—'}</span>`;
   }
 
   function pillHTML(val, fallback) {
-    const display = val || fallback || 'Active';
-    const v = display.toLowerCase();
-    const cls = v==='active'?'pill-active':v==='review'?'pill-review':v==='pending'?'pill-pending':'pill-none';
-    return `<div class="pill ${cls}">${display}</div>`;
+    const display = val || fallback || 'Active';
+    const v = display.toLowerCase();
+    const cls = v==='active'?'pill-active':v==='review'?'pill-review':v==='pending'?'pill-pending':'pill-none';
+    return `<div class="pill ${cls}">${display}</div>`;
   }
 
-  function cardHTML(barClass, iconClass, emoji, name, role, pillVal, pillFallback, bodyHTML) {
-    return `<div class="card">
-      <div class="card-bar ${barClass}"></div>
-      <div class="card-head">
-        <div class="agent-id">
-          <div class="agent-icon ${iconClass}">${emoji}</div>
-          <div><div class="agent-name">${name}</div><div class="agent-role">${role}</div></div>
-        </div>
-        ${pillHTML(pillVal, pillFallback)}
-      </div>
-      <div class="card-body">${bodyHTML}</div>
-    </div>`;
+  function cardHTML(barCls, iconCls, emoji, name, role, pillVal, pillFallback, body) {
+    return `<div class="card">
+      <div class="card-bar ${barCls}"></div>
+      <div class="card-head">
+        <div class="agent-id">
+          <div class="agent-icon ${iconCls}">${emoji}</div>
+          <div><div class="agent-name">${name}</div><div class="agent-role">${role}</div></div>
+        </div>
+        ${pillHTML(pillVal, pillFallback)}
+      </div>
+      <div class="card-body">${body}</div>
+    </div>`;
   }
 
-  (function run() {
-    document.getElementById('lastUpdated').textContent =
-      'Updated ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  function render(d) {
+    const stack = document.getElementById('stack');
+    stack.innerHTML = '';
+    let count = 0;
 
-    const stack = document.getElementById('stack');
-    let rendered = 0;
+    // ── Flash ──
+    if (d.mx_AI_Readiness_Score || d.mx_Readiness_Bucket || d.mx_AI_Detected_Intent || d.mx_AI_Reasoning) {
+      const n = Math.min(100, Math.max(0, parseInt(d.mx_AI_Readiness_Score)||0));
+      const offset = (119.38 - (n/100)*119.38).toFixed(2);
+      const bktCls = (d.mx_Readiness_Bucket||'').toLowerCase()==='high'?'bkt-high':(d.mx_Readiness_Bucket||'').toLowerCase()==='medium'?'bkt-medium':'bkt-low';
+      const body = `
+        <div class="score-hero">
+          <div class="score-ring"><svg viewBox="0 0 46 46">
+            <circle class="ring-bg" cx="23" cy="23" r="19"/>
+            <circle class="ring-fill" id="fring" cx="23" cy="23" r="19" stroke-dasharray="119.38" stroke-dashoffset="119.38"/>
+          </svg><div class="score-num">${n||'—'}</div></div>
+          <div><div class="score-label">Readiness Score</div><div class="score-bucket ${bktCls}">${d.mx_Readiness_Bucket||'—'}</div></div>
+        </div>
+        <div class="fields">
+          ${d.mx_AI_Detected_Intent ? `<div class="field"><div class="f-label">Detected Intent</div><div class="f-val c-flash">${d.mx_AI_Detected_Intent}</div></div>` : ''}
+        </div>
+        ${d.mx_AI_Reasoning ? `<div class="insight-block ib-flash"><div class="f-label" style="margin-bottom:4px;font-style:normal">AI Reasoning</div>${d.mx_AI_Reasoning}</div>` : ''}`;
+      stack.innerHTML += cardHTML('bar-flash','icon-flash','⚡','Agent Flash','60 Seconds to Schedule','Active','Active',body);
+      setTimeout(()=>{ const r=document.getElementById('fring'); if(r) r.style.strokeDashoffset=offset; },150);
+      count++;
+    }
 
-    // ── FLASH ──
-    const fScore  = p('mx_AI_Readiness_Score');
-    const fBucket = p('mx_Readiness_Bucket');
-    const fIntent = p('mx_AI_Detected_Intent');
-    const fReason = p('mx_AI_Reasoning');
+    // ── Sherlock ──
+    if (d.mx_QA_Status || d.mx_QA_Risk_Level || d.mx_QA_Summary || d.mx_QA_Key_Findings) {
+      const body = `
+        <div class="two-col">
+          <div class="field"><div class="f-label">QA Status</div><div class="f-val c-sherlock">${d.mx_QA_Status||'—'}</div></div>
+          <div class="field"><div class="f-label">Risk Level</div>${badgeHTML(d.mx_QA_Risk_Level)}</div>
+        </div>
+        <div class="fields">
+          ${d.mx_QA_Summary   ? `<div class="field"><div class="f-label">QA Summary</div><div class="f-val">${d.mx_QA_Summary}</div></div>` : ''}
+          ${d.mx_QA_Key_Findings ? `<div class="field"><div class="f-label">Key Findings</div><div class="f-val">${d.mx_QA_Key_Findings}</div></div>` : ''}
+          ${d.mx_QA_Advisory_Notes ? `<div class="field"><div class="f-label">Advisory Notes</div><div class="f-val">${d.mx_QA_Advisory_Notes}</div></div>` : ''}
+        </div>
+        ${d.mx_QA_Concerns ? `<div class="insight-block ib-sherlock">${d.mx_QA_Concerns}</div>` : ''}`;
+      stack.innerHTML += cardHTML('bar-sherlock','icon-sherlock','🔍','Agent Sherlock','Application QA Review',d.mx_QA_Status,'Review',body);
+      count++;
+    }
 
-    if (fScore || fBucket || fIntent || fReason) {
-      const n = Math.min(100, Math.max(0, parseInt(fScore)||0));
-      const offset = (119.38 - (n/100)*119.38).toFixed(2);
-      const bktCls = (fBucket||'').toLowerCase()==='high'?'bkt-high':(fBucket||'').toLowerCase()==='medium'?'bkt-medium':'bkt-low';
-      const body = `
-        <div class="score-hero">
-          <div class="score-ring">
-            <svg viewBox="0 0 46 46">
-              <circle class="ring-bg" cx="23" cy="23" r="19"/>
-              <circle class="ring-fill" id="fring" cx="23" cy="23" r="19" stroke-dasharray="119.38" stroke-dashoffset="119.38"/>
-            </svg>
-            <div class="score-num">${n||'—'}</div>
-          </div>
-          <div>
-            <div class="score-label">Readiness Score</div>
-            <div class="score-bucket ${bktCls}">${fBucket||'—'}</div>
-          </div>
-        </div>
-        <div class="fields">
-          <div class="field"><div class="f-label">Detected Intent</div><div class="f-val c-flash">${fIntent||'—'}</div></div>
-        </div>
-        ${fReason ? `<div class="insight-block ib-flash"><div class="f-label" style="margin-bottom:4px">AI Reasoning</div>${fReason}</div>` : ''}`;
-      stack.innerHTML += cardHTML('bar-flash','icon-flash','⚡','Agent Flash','60 Seconds to Schedule','Active','Active',body);
-      rendered++;
-      setTimeout(()=>{ const r=document.getElementById('fring'); if(r) r.style.strokeDashoffset=offset; },150);
-    }
+    // ── Hawke ──
+    if (d.mx_Latest_Anomaly_Type || d.mx_Latest_Anomaly_Severity || d.mx_Latest_Anomaly_Confidence || d.mx_Latest_Anomaly_Explanation) {
+      const hN = Math.min(100, Math.max(0, parseInt(d.mx_Latest_Anomaly_Confidence)||0));
+      const body = `
+        <div class="two-col">
+          <div class="field"><div class="f-label">Anomaly Type</div><span class="anomaly-chip">${d.mx_Latest_Anomaly_Type||'—'}</span></div>
+          <div class="field"><div class="f-label">Severity</div>${badgeHTML(d.mx_Latest_Anomaly_Severity)}</div>
+        </div>
+        <div class="fields">
+          <div class="field"><div class="f-label">Confidence</div>
+            <div class="conf-wrap">
+              <div class="conf-track"><div class="conf-fill cf-hawke" id="hbar" style="width:0%"></div></div>
+              <div class="conf-num">${hN||'—'}</div>
+            </div>
+          </div>
+          ${d.mx_Last_Intelligence_Run ? `<div class="field"><div class="f-label">Last Intelligence Run</div><div class="f-val c-hawke">${d.mx_Last_Intelligence_Run}</div></div>` : ''}
+        </div>
+        ${d.mx_Latest_Anomaly_Explanation ? `<div class="insight-block ib-hawke">${d.mx_Latest_Anomaly_Explanation}</div>` : ''}`;
+      stack.innerHTML += cardHTML('bar-hawke','icon-hawke','🦅','Agent Hawke','Anomaly Detection',d.mx_AI_Anomaly_Status,'Active',body);
+      setTimeout(()=>{ const b=document.getElementById('hbar'); if(b) b.style.width=hN+'%'; },200);
+      count++;
+    }
 
-    // ── SHERLOCK ──
-    const sStatus   = p('mx_QA_Status');
-    const sRisk     = p('mx_QA_Risk_Level');
-    const sSummary  = p('mx_QA_Summary');
-    const sFindings = p('mx_QA_Key_Findings');
-    const sAdvisory = p('mx_QA_Advisory_Notes');
-    const sConcerns = p('mx_QA_Concerns');
+    // ── Invorto ──
+    if (d.mx_Primary_Hesitation || d.mx_Motivation_Trigger || d.mx_Decision_Owner || d.mx_Enrollment_Timeline_Voice_Call) {
+      const body = `<div class="fields">
+        ${d.mx_Primary_Hesitation ? `<div class="field"><div class="f-label">Primary Hesitation</div><div class="f-val">${d.mx_Primary_Hesitation}</div></div>` : ''}
+        ${d.mx_Motivation_Trigger ? `<div class="field"><div class="f-label">Motivation Trigger</div><div class="f-val c-invorto">${d.mx_Motivation_Trigger}</div></div>` : ''}
+        ${(d.mx_Decision_Owner || d.mx_Enrollment_Timeline_Voice_Call) ? '<div class="hdivider"></div>' : ''}
+        ${d.mx_Decision_Owner ? `<div class="field"><div class="f-label">Decision Owner</div><div class="f-val">${d.mx_Decision_Owner}</div></div>` : ''}
+        ${d.mx_Enrollment_Timeline_Voice_Call ? `<div class="field"><div class="f-label">Enrollment Timeline</div><div class="f-val">${d.mx_Enrollment_Timeline_Voice_Call}</div></div>` : ''}
+      </div>`;
+      stack.innerHTML += cardHTML('bar-invorto','icon-invorto','🎙️','Invorto Voice','Call Qualification','Active','Active',body);
+      count++;
+    }
 
-    if (sStatus || sRisk || sSummary || sFindings) {
-      const body = `
-        <div class="two-col">
-          <div class="field"><div class="f-label">QA Status</div><div class="f-val c-sherlock">${sStatus||'—'}</div></div>
-          <div class="field"><div class="f-label">Risk Level</div>${setBadgeHTML(sRisk)}</div>
-        </div>
-        <div class="fields">
-          ${sSummary  ? `<div class="field"><div class="f-label">QA Summary</div><div class="f-val">${sSummary}</div></div>` : ''}
-          ${sFindings ? `<div class="field"><div class="f-label">Key Findings</div><div class="f-val">${sFindings}</div></div>` : ''}
-          ${sAdvisory ? `<div class="field"><div class="f-label">Advisory Notes</div><div class="f-val">${sAdvisory}</div></div>` : ''}
-        </div>
-        ${sConcerns ? `<div class="insight-block ib-sherlock">${sConcerns}</div>` : ''}`;
-      stack.innerHTML += cardHTML('bar-sherlock','icon-sherlock','🔍','Agent Sherlock','Application QA Review',sStatus,'Review',body);
-      rendered++;
-    }
+    if (count === 0) {
+      stack.innerHTML = `<div class="all-empty">
+        <div class="all-empty-emoji">🤖</div>
+        <div class="all-empty-title">The agents are on standby.</div>
+        <div class="all-empty-sub">No analysis has been run on this lead yet.</div>
+      </div>`;
+    }
 
-    // ── HAWKE ──
-    const hType   = p('mx_Latest_Anomaly_Type');
-    const hSev    = p('mx_Latest_Anomaly_Severity');
-    const hConf   = p('mx_Latest_Anomaly_Confidence');
-    const hRun    = p('mx_Last_Intelligence_Run');
-    const hExp    = p('mx_Latest_Anomaly_Explanation');
-    const hStatus = p('mx_AI_Anomaly_Status');
+    document.getElementById('lastUpdated').textContent =
+      'Updated ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  }
 
-    if (hType || hSev || hConf || hExp) {
-      const hN = Math.min(100, Math.max(0, parseInt(hConf)||0));
-      const body = `
-        <div class="two-col">
-          <div class="field"><div class="f-label">Anomaly Type</div><span class="anomaly-chip">${hType||'—'}</span></div>
-          <div class="field"><div class="f-label">Severity</div>${setBadgeHTML(hSev)}</div>
-        </div>
-        <div class="fields">
-          <div class="field">
-            <div class="f-label">Confidence</div>
-            <div class="conf-wrap">
-              <div class="conf-track"><div class="conf-fill cf-hawke" id="hbar" style="width:0%"></div></div>
-              <div class="conf-num cn-hawke">${hN||'—'}</div>
-            </div>
-          </div>
-          ${hRun ? `<div class="field"><div class="f-label">Last Intelligence Run</div><div class="f-val c-hawke">${hRun}</div></div>` : ''}
-        </div>
-        ${hExp ? `<div class="insight-block ib-hawke">${hExp}</div>` : ''}`;
-      stack.innerHTML += cardHTML('bar-hawke','icon-hawke','🦅','Agent Hawke','Anomaly Detection',hStatus,'Active',body);
-      rendered++;
-      setTimeout(()=>{ const b=document.getElementById('hbar'); if(b) b.style.width=hN+'%'; },200);
-    }
+  async function load() {
+    const id = pid();
+    if (!id) {
+      document.getElementById('stack').innerHTML = `<div class="all-empty">
+        <div class="all-empty-emoji">🔍</div>
+        <div class="all-empty-title">No lead ID found.</div>
+        <div class="all-empty-sub">Make sure the Custom Tab URL includes ?pid={{ProspectID}}</div>
+      </div>`;
+      return;
+    }
+    try {
+      const res = await fetch(`${API_BASE}/lead-intelligence?pid=${id}`);
+      const json = await res.json();
+      if (json.success) {
+        render(json.data);
+      } else {
+        throw new Error(json.error || 'Unknown error');
+      }
+    } catch(err) {
+      document.getElementById('stack').innerHTML = `<div class="all-empty">
+        <div class="all-empty-emoji">⚠️</div>
+        <div class="all-empty-title">Could not load intelligence.</div>
+        <div class="all-empty-sub">${err.message}</div>
+      </div>`;
+    }
+  }
 
-    // ── INVORTO ──
-    const iHes      = p('mx_Primary_Hesitation');
-    const iMotiv    = p('mx_Motivation_Trigger');
-    const iOwner    = p('mx_Decision_Owner');
-    const iTimeline = p('mx_Enrollment_Timeline_Voice_Call');
-
-    if (iHes || iMotiv || iOwner || iTimeline) {
-      const body = `
-        <div class="fields">
-          ${iHes      ? `<div class="field"><div class="f-label">Primary Hesitation</div><div class="f-val">${iHes}</div></div>` : ''}
-          ${iMotiv    ? `<div class="field"><div class="f-label">Motivation Trigger</div><div class="f-val c-invorto">${iMotiv}</div></div>` : ''}
-          ${iOwner || iTimeline ? '<div class="hdivider"></div>' : ''}
-          ${iOwner    ? `<div class="field"><div class="f-label">Decision Owner</div><div class="f-val">${iOwner}</div></div>` : ''}
-          ${iTimeline ? `<div class="field"><div class="f-label">Enrollment Timeline</div><div class="f-val">${iTimeline}</div></div>` : ''}
-        </div>`;
-      stack.innerHTML += cardHTML('bar-invorto','icon-invorto','🎙️','Invorto Voice','Call Qualification','Active','Active',body);
-      rendered++;
-    }
-
-    // ── ALL EMPTY ──
-    if (rendered === 0) {
-      stack.innerHTML = `<div class="all-empty">
-        <div class="all-empty-emoji">🤖</div>
-        <div class="all-empty-title">The agents are on standby.</div>
-        <div class="all-empty-sub">No analysis has been run on this lead yet. Check back after the first automation trigger.</div>
-      </div>`;
-    }
-
-  })();
+  load();
 </script>
 </body>
 </html>
+
